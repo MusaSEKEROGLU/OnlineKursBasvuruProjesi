@@ -1,0 +1,96 @@
+﻿@model IEnumerable<KursBasvuruCoreMvc.WebUI.Models.Candidate>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <h5 style="color:brown;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" class="display-6">Online Software Courses</h5>  
+    <p>
+    
+        <h6 style="color:darkblue">Yazılımcı olmak için hangi eğitimi almak gerekli?</h6>
+        Son yılların yükselen meslekleri arasında yer alan 
+        yazılımcılık popülerliğini her geçen gün arttırıyor.
+        Peki, yazılımcı olmak için ne yapmalı, hangi eğitimleri 
+        almalı? Bu soruların cevabını ve daha fazlasını senin 
+        için bu yazımızda paylaştık.
+        Seyahat tutkunu bir yazılımcı adayıysan, bu meslek sana 
+        mükemmel bir alternatif sunar. Bir dizüstü bilgisayar eşliğinde 
+        internet bağlantısı olan her yerden iş yapmana imkân tanır.
+        Bu sebeple özellikle son yıllarda giderek yaygınlaşan uzaktan, 
+        evden çalışma seçenekleri içinde yazılımcılık önemli bir 
+        konuma sahip. Bir restorandan ya da bir kafeden kısacası 
+        bulunduğun her yerden bu mesleği yapabileceğin imkanlarla karşılaşabilirsin.
+        Zaman ve mekân özgürlüğü olan bir yazılımcı olmak, 
+        bilgisayar bilimi ve programlamada güçlü bir temel 
+        gerektiriyor. Bu temele, farklı eğitimler alarak sahip olman mümkün. 
+        Üniversitede alacağın lisans eğitiminin dışında, bazı kamplar, 
+        kurslar, çevrimiçi platformlar sana bu konuda yol gösterebilir.
+        <br />
+        <br />
+        <h6 style="color:darkblue">Üniversite okumadan yazılımcı olmak mümkün mü?</h6>
+        Evet, üniversite eğitimi almadan da yazılımcı olman mümkün. 
+        Yazılımcı olmak için hangi bölüm okunmalı diye düşünüyorsan, 
+        Bilgisayar Mühendisliği ya da Yazılım Mühendisliğinde bir üniversite 
+        eğitimi güçlü bir temel sağlayabilir. Genellikle işverenler tarafından da
+        bu tercih edilebilir; ama programlamayı öğrenmenin ve gerekli
+        becerileri geliştirmenin alternatif yolları da var. Bu alternatiflerden biri,
+        bir kodlama eğitim programına veya başka bir yoğun programlama kursuna 
+        katılmak olabilir. Bu programlar, nispeten kısa bir süre içinde, genellikle de 
+        birkaç ay içinde bir yazılım geliştiricisi olman için gereken becerileri sana
+        öğretmek üzere tasarlanıyor. Birçok kodlama eğitim kampı, işe yerleştirme 
+        yardımı da sunabiliyor. Alaylı yazılımcı olmak için başka bir seçenek de 
+        çevrimiçi kaynaklar, kitaplar ve öğreticiler aracılığıyla programlamayı 
+        kendi başına öğrenebilmek. Sana programlama dillerini ve geliştirme 
+        çerçevelerini öğretebilecek çok sayıda ücretsiz çevrimiçi kaynağa 
+        erişebilirsin. Kendi kendine öğrenen bir yazılımcıysan, program mezunlarına 
+        sosyal medya hesaplarından ulaşarak onlara deneyimlerini sorman senin için 
+        faydalı olabilir. Üniversite diploması olmadan bir yazılım geliştiricisi
+        olmak istiyorsan, becerilerini kanıtlaman ve deneyim kazanmak için daha 
+        fazla çaba ve zaman harcaman gerektiğini unutmamalısın. Ancak farklı eğitim 
+        seçeneklerini değerlendirerek ve deneyimin doğru birleşimi ile yazılım
+        okumadan yazılımcı olmak istiyorsan, bu da mümkün…
+    </p>  
+
+    <p>
+        <a class="btn btn-primary" asp-controller="Course" asp-action="Apply">Apply</a>
+    </p>
+</div>
+    <hr />
+    @if (Model.Count() > 0)
+    {
+        <h6 class="display-6">
+            Applications(@Model.Count())
+        </h6>
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Full Name</th>
+                    <th>Apply At</th>
+                    <th>Course</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var candidate in Model)
+                {
+                 <tr>
+                    <td>@candidate.Email</td>
+                    <td>@candidate.FullName</td>
+                    <td>@candidate.ApplyAt</td>
+                    <td>@candidate.SelectedCourse</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            There is no application.Please click here to
+            <a class="alert-link" asp-action="Apply">apply.</a>
+        </div>
+    }
+
+
+
